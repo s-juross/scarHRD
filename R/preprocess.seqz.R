@@ -17,9 +17,9 @@ preprocess.seqz<-function(seg, ploidy0=NULL, chr.in.names=TRUE, outputdir=NULL){
   
   run_name<-gsub(".*/","",gsub("_small.seqz","",gsub("gz","",seg)))
   if(chr.in.names){
-  extract<-sequenza.extract(seg, chromosome.list=paste('chr',c(1:24),sep=''),gamma = 60, kmin = 50)
+  extract<-sequenza.extract(seg, chromosome.list=paste('chr',c(1:22,"X"),sep=''),gamma = 60, kmin = 50)
    } else {
-  extract<-sequenza.extract(seg, chromosome.list=c(1:24),gamma = 60, kmin = 50)
+  extract<-sequenza.extract(seg, chromosome.list=c(1:22,"X"),gamma = 60, kmin = 50)
    }
   extract.fit<-sequenza::sequenza.fit(extract, N.ratio.filter = 10, N.BAF.filter = 1, segment.filter = 3e6, mufreq.treshold = 0.10, ratio.priority = FALSE,ploidy=ploidy01, mc.cores = 1)
   #  sequenza.results(extract, extract.fit, out.dir = getwd(),sample.id =run_name)
