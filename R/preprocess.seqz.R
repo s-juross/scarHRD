@@ -5,6 +5,7 @@
 #' @param ploidy0 ploidy, optional
 #' @return Output is
 preprocess.seqz<-function(seg, ploidy0=NULL, chr.in.names=TRUE, outputdir=NULL){
+  cat("hallo")
   if (is.null(ploidy0)){
     ploidy01 = seq(1, 5.5, 0.1)
   } else {
@@ -14,7 +15,7 @@ preprocess.seqz<-function(seg, ploidy0=NULL, chr.in.names=TRUE, outputdir=NULL){
   if (is.null(outputdir)){
     outputdir = getwd()
   }
-  cat("hallo")
+  
   run_name<-gsub(".*/","",gsub("_small.seqz","",gsub("gz","",seg)))
   if(chr.in.names){
   extract<-sequenza.extract(seg, chromosome.list=paste('chr',c(1:22,"X"),sep=''),gamma = 60, kmin = 50)
