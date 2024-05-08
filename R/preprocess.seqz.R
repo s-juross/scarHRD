@@ -26,7 +26,11 @@ preprocess.seqz<-function(seg, ploidy0=NULL, chr.in.names=TRUE, outputdir=NULL){
   cat("\n hier wird extract ausgegeben: \n")
   extract$mutations
   cat("\n Nun sequenza fit: \n")
-  extract.fit<-sequenza::sequenza.fit(extract, N.ratio.filter = 10, N.BAF.filter = 1, segment.filter = 3e6, mufreq.treshold = 0.10, ratio.priority = FALSE,ploidy=ploidy01, mc.cores = 1)
+  tryCatch({
+    extract.fit<-sequenza::sequenza.fit(extract, N.ratio.filter = 10, N.BAF.filter = 1, segment.filter = 3e6, mufreq.treshold = 0.10, ratio.priority = FALSE,ploidy=ploidy01, mc.cores = 1)
+    }, error=function(e) {
+      cat("\nIn Sequenza.fit ist ein Fehler aufgetreten.\n")
+    })
   #  sequenza.results(extract, extract.fit, out.dir = getwd(),sample.id =run_name)
   
   seg.tab <- do.call(rbind, extract$segments[extract$chromosomes])
