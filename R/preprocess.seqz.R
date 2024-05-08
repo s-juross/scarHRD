@@ -19,7 +19,7 @@ preprocess.seqz<-function(seg, ploidy0=NULL, chr.in.names=TRUE, outputdir=NULL){
   run_name<-gsub(".*/","",gsub("_small.seqz","",gsub("gz","",seg)))
   cat("\n Nun sequenza extract: \n")
   if(chr.in.names){
-  extract<-sequenza.extract(seg, chromosome.list=paste('chr',c(1:22,"X"),sep=''),gamma = 60, kmin = 50)
+  extract<-sequenza.extract(seg, chromosome.list=paste('chr',c(1:22),sep=''),gamma = 60, kmin = 50)
    } else {
   extract<-sequenza.extract(seg, chromosome.list=c(1:22,"X"),gamma = 60, kmin = 50)
    }
