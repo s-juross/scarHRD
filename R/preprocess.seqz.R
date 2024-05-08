@@ -24,7 +24,7 @@ preprocess.seqz<-function(seg, ploidy0=NULL, chr.in.names=TRUE, outputdir=NULL){
   extract<-sequenza.extract(seg, chromosome.list=c(1:22,"X"),gamma = 60, kmin = 50)
    }
   cat("\n hier wird extract ausgegeben: \n")
-  extract
+  extract$mutations
   cat("\n Nun sequenza fit: \n")
   extract.fit<-sequenza::sequenza.fit(extract, N.ratio.filter = 10, N.BAF.filter = 1, segment.filter = 3e6, mufreq.treshold = 0.10, ratio.priority = FALSE,ploidy=ploidy01, mc.cores = 1)
   #  sequenza.results(extract, extract.fit, out.dir = getwd(),sample.id =run_name)
